@@ -1,0 +1,63 @@
+﻿@model IEnumerable<Gestao_Clientes.Models.ClientService>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<section class="section-main">
+    <article class="logo-article">
+        <img src="~/images/logo_clientmanagement.png" alt="Client management module logo" />
+    </article>
+
+    <article class="welcome-article">
+        <br />
+        <br />
+        <h1>Clients and services</h1>
+        <br />
+        <br />
+        <h2>Welcome to the Client Service Management Data</h2>
+        <p>
+            This display allows you to efficiently track and manage the types of services the customers have choosen, with features to have a clear overview, edit, delete, add records, and more.
+        </p>
+    </article>
+</section>
+
+<div class="info-div">
+    <p>Keep records accurate and detailed for client service management efficiency.</p>
+</div>
+
+<p id="navigationItens">
+    <a asp-action="Create">Create a new row for a new record</a>
+</p>
+<table class="table" id="navigationItens">
+    <thead>
+        <tr>
+            <th>Operations in each row</th>
+            <th>
+                @Html.DisplayNameFor(model => model.Client)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Service)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+                <td>
+                    <a id="navigationItens" asp-action="Edit" asp-route-id="@item.ClientServiceId">Edit</a>
+                    <br />
+                    <a id="navigationItens" asp-action="Details" asp-route-id="@item.ClientServiceId">Details</a>
+                    <br />
+                    <a id="navigationItens" asp-action="Delete" asp-route-id="@item.ClientServiceId">Delete</a>
+                </td>
+            <td>
+                    @Html.DisplayFor(modelItem => item.Client.FullName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Service.Description)
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

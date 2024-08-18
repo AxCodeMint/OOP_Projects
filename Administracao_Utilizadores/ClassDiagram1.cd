@@ -1,0 +1,132 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Administracao_Utilizadores.Data.UserRepository" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="7.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAAAAAAAAAAAAAABAAAEACAQCAAAAgAgAAAAAAAMg=</HashCode>
+      <FileName>Data\UserRepository.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Administracao_Utilizadores.Models.AdminUser" Collapsed="true">
+    <Position X="3" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\AdminUser.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Administracao_Utilizadores.Models.CredentialsModel" Collapsed="true">
+    <Position X="9.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAQAAAAAAAAAAAAACAAAAAAAAAAA=</HashCode>
+      <FileName>Models\CredentialsModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Administracao_Utilizadores.Models.PowerUser" Collapsed="true">
+    <Position X="0.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\PowerUser.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Administracao_Utilizadores.Models.ReadLineInfo" Collapsed="true">
+    <Position X="9.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAACAAAAAA=</HashCode>
+      <FileName>Models\ReadLineInfo.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Administracao_Utilizadores.Models.Session" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="11.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAACgAAAAAAAAAAAAAAIAAAAAAAAAAAAQAAAAAAA=</HashCode>
+      <FileName>Models\Session.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Administracao_Utilizadores.Models.SimpleUser" Collapsed="true">
+    <Position X="5.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\SimpleUser.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Administracao_Utilizadores.Models.User" Collapsed="true">
+    <Position X="3" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQCIAAAACAIIAAAEQBAAAQAAAAAAAACAAIBIAAAABE=</HashCode>
+      <FileName>Models\User.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Administracao_Utilizadores.Models.Menus.AdminUserMenu" Collapsed="true">
+    <Position X="2.75" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAgAxAIAAAAAAAAAAAQAAAAAAAgAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Menus\AdminUserMenu.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Administracao_Utilizadores.Models.Menus.LoginMenu" Collapsed="true">
+    <Position X="11.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAQAAABAAA=</HashCode>
+      <FileName>Models\Menus\LoginMenu.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Administracao_Utilizadores.Models.Menus.Menu" Collapsed="true">
+    <Position X="1.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAQACAiAAAIAAAAAAAAACQQAAAAAADgAAABAAAAAAA=</HashCode>
+      <FileName>Models\Menus\Menu.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Administracao_Utilizadores.Models.Menus.PowerUserMenu" Collapsed="true">
+    <Position X="2.75" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAgAAAIAAAAAAAABAAQAAAAAAAgAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Menus\PowerUserMenu.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Administracao_Utilizadores.Models.Menus.SimpleUserMenu" Collapsed="true">
+    <Position X="0.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAgAAAIAAAAAAAAAAAQAAAAAAAgAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Menus\SimpleUserMenu.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Administracao_Utilizadores.Program" Collapsed="true">
+    <Position X="7.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
+      <FileName>Program.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Administracao_Utilizadores.Utilities.ConsoleUtility" Collapsed="true">
+    <Position X="7.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAKAAACAAAAAAAAAQAABAAIAABEAAAEAAAQAAAAIAgA=</HashCode>
+      <FileName>Utilities\ConsoleUtility.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="Administracao_Utilizadores.Data.Interfaces.IUserRepository" Collapsed="true">
+    <Position X="9.5" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAEACAQCAAAAgAgAAAAAAAMg=</HashCode>
+      <FileName>Data\Interfaces\IUserRepository.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Administracao_Utilizadores.Interfaces.ISession" Collapsed="true">
+    <Position X="7.75" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAACAAAAAAAAAAAAAAAIAAAAAAAAAAAAQAAAAAAA=</HashCode>
+      <FileName>Interfaces\ISession.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Enum Name="Administracao_Utilizadores.Enums.EnumRole" Collapsed="true">
+    <Position X="7.75" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ARAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Enums\EnumRole.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

@@ -1,0 +1,182 @@
+html {
+    font-size: 14px; /* font size to 14px */
+    position: relative; /* element relative to its normal position */
+    min-height: 100%; /* at least 100% of the view height */
+    overflow: auto; /* adds scrollbars if content overflows the element */
+}
+
+@media (min-width: 768px) {
+    html {
+        font-size: 16px; /* font size to 16px on screens 768px or more */
+    }
+}
+
+body {
+    margin-bottom: 60px; /* margin at the bottom of the body */
+    box-sizing: border-box; /* padding and border within the element's width and height */
+}
+
+h1 {
+    color: #933E3F; /* text color */
+}
+
+h2, h4 {
+    color: #29B8CB; /* text color */
+    margin-bottom: 1rem; /* margin at the bottom */
+    margin-top: 1rem; /* margin at the top */
+}
+
+h3 {
+    color: #328686; /* text color */
+}
+
+p {
+    color: #176873; /* text color */
+}
+
+.section-main {
+    display: flex; /* uses flexbox for layout */
+    align-items: center; /* vertically centers flex items */
+    gap: 20px; /* gap between flex items */
+    width: 100%; /* 100% of width */
+    background-color: white; /* background color to white */
+    border-bottom: 3px groove #ddd; /* border at the bottom */
+    padding: 20px; /* padding inside section */
+}
+
+.logo-article {
+    flex: 1; /* logo article takes one part of the available space */
+}
+
+    .logo-article img {
+        width: 85%; /* image inside logo article 85% of the container's width */
+        height: auto; /* maintain image's aspect ratio */
+    }
+
+.welcome-article {
+    flex: 2; /*  welcome article takes two parts of the available space */
+    text-align: center; /* centers text horizontally */
+}
+
+.info-div {
+    margin: 5%; /* margin around the info div */
+    width: 100%; /* info div 100% of the container's width */
+    color: black; /* text color black */
+    word-wrap: break-word; /* long words wrap if they exceed the container's width */
+}
+
+.navbar-brand {
+    font-weight: bold; /* text bold */
+    margin: 1em; /* margin */
+}
+
+#navigationItens a {
+    color: #328686; /* color */
+    font-weight: bold; /* text bold */
+    text-decoration: underline; /* underline */
+    transition: color 0.3s ease; /* smooth transition effect for color changes */
+    margin: 1em; /* 1em margin around links */
+    flex: 1; /* distributes links evenly in the flex container */
+}
+
+    #navigationItens a:hover {
+        color: #CE5759; /* color chages on hover */
+        text-decoration: underline; /* underlines text on hover */
+        text-decoration-color: #29B8CB; /* underline color */
+        transition: 0.2s ease; /* smooth transition effect on hover */
+    }
+
+#homeDiv {
+    display: block; /* element to block */
+    align-items: center; /* centers content vertically (won't affect block elements) */
+    justify-content: center; /* centers content horizontally (won't affect block elements) */
+    width: 100%; /* 100% of container's width */
+    margin: 0 auto; /* centers division horizontally */
+    text-align: center; /* centers text horizontally */
+}
+
+    #homeDiv img {
+        width: 30%; /* image width 30% of the container's width */
+        height: auto; /* maintains image's aspect ratio */
+        margin-bottom: 20px; /* 20px margin at the bottom of the image */
+    }
+
+    #homeDiv h1:hover {
+        font-weight: bold; /* text bold on hover */
+        text-decoration: underline; /* underline text on hover */
+        color: #DC7979; /* change text color on hover */
+        text-decoration-color: #29B8CB; /* underline color on hover */
+        transition: 0.2s ease; /* smooth transition effect on hover */
+    }
+
+    #homeDiv p {
+        border-bottom: 3px double #ddd; /* 3px double border at the bottom */
+        padding: 5%; /* 5% padding inside */
+    }
+
+.table {
+    font-size: 12px; /* font-size */
+    max-width: 100%; /* table 100% of container's width */
+    overflow-x: auto; /* horizontal scroll if content overflows */
+    word-wrap: normal; /* line breaks/wrap */
+    border-collapse: collapse; /* collapses the borders of the table cells */
+}
+
+    .table th, td {
+        text-align: left; /* text inside table cells to the left */
+        padding: 6px; /* padding inside table cells */
+        border: 1px solid black; /* solid border*/
+        flex: 1; /* takes one part of the available space */
+    }
+
+    .table th {
+        background-color: #ADCBD2; /* background color of table headers */
+    }
+
+a {
+    color: #328686; /* color */
+}
+
+    a:hover {
+        color: #CE5759; /* color */
+        font-weight: bold; /* text bold */
+        transition: 0.2s ease; /* smooth transition effect on hover */
+    }
+
+.btn-primary {
+    background-color: #328686; /* background color */
+    border: none; /* no border */
+}
+
+    .btn-primary:hover {
+        color: #328686; /* color on hover */
+        font-weight: bold; /* text bold on hover */
+        background-color: lightgray; /* background color on hover */
+        transition: 0.2s ease; /* smooth transition effect on hover */
+    }
+
+    .btn-primary:active {
+        color: #328686; /* color on active */
+        font-weight: bold; /* text bold on active */
+        background-color: lightgray; /* background color on active */
+        transition: 0.2s ease; /* smooth transition effect on active */
+    }
+
+.btn-danger {
+    background-color: #328686; /* background color */
+    border: none; /* no border */
+}
+
+    .btn-danger:hover {
+        color: #328686; /* color on hover */
+        font-weight: bold; /* text bold on hover */
+        background-color: lightgray; /* background color on hover */
+        transition: 0.2s ease; /* smooth transition effect on hover */
+    }
+
+    .btn-danger:active {
+        color: #328686; /* color on active */
+        font-weight: bold; /* text bold on active */
+        background-color: lightgray; /* background color on active */
+        transition: 0.2s ease; /* smooth transition effect on active */
+    }

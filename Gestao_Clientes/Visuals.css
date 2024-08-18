@@ -1,0 +1,44 @@
+﻿body {
+}
+
+/* Estilo para o logo */
+.logo {
+    width: 150px;
+    margin: 20px 0;
+}
+
+/* Estilo para a barra de navegação */
+.navbar {
+    list-style-type: none;
+    padding: 0;
+    background-color: #333;
+}
+
+    .navbar li {
+        display: inline;
+        margin-right: 15px;
+    }
+
+    .navbar a {
+        color: white;
+        text-decoration: none;
+        padding: 10px;
+    }
+
+        .navbar a:hover {
+            background-color: #555;
+            transition: 0.3s;
+        }
+
+/* Estilo para o rodapé */
+footer {
+    background-color: #f1f1f1;
+    text-align: center;
+    padding: 10px;
+    margin-top: 20px;
+}
+
+    footer p {
+        margin: 0;
+        color: #333;
+    }

@@ -1,0 +1,76 @@
+﻿@model IEnumerable<Gestao_Clientes.Models.Payment>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<section class="section-main">
+    <article class="logo-article">
+        <img src="~/images/logo_clientmanagement.png" alt="Client management module logo" />
+    </article>
+
+    <article class="welcome-article">
+        <br />
+        <br />
+        <h1>Payments</h1>
+        <br />
+        <br />
+        <h2>Welcome to the Payment Management Data</h2>
+        <p>
+            This display allows you to efficiently manage all payment transactions with detailed insights including the payment date, method, amount, and associated client, and  with features to have a clear overview, edit, delete, add records, and more.
+        </p>
+    </article>
+</section>
+
+<div class="info-div">
+    <p>Keep accurate records of all financial transactions for correct accounting processes and enhance overall financial management.</p>
+</div>
+
+<p id="navigationItens">
+    <a asp-action="Create">Create a new row for a new record</a>
+</p>
+<table class="table" id="navigationItens">
+    <thead>
+        <tr>
+            <th>Operations in each row</th>
+            <th>
+                @Html.DisplayNameFor(model => model.PaymentDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PaymentMethod)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Value)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Client)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    <a id="navigationItens" asp-action="Edit" asp-route-id="@item.PaymentId">Edit</a>
+                    <br />
+                    <a id="navigationItens" asp-action="Details" asp-route-id="@item.PaymentId">Details</a>
+                    <br />
+                    <a id="navigationItens" asp-action="Delete" asp-route-id="@item.PaymentId">Delete</a>
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PaymentDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PaymentMethod)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Value)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Client.FullName)
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

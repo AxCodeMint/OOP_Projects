@@ -1,0 +1,124 @@
+﻿@model IEnumerable<Gestao_Clientes.Models.Client>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<section class="section-main">
+    <article class="logo-article">
+        <img src="~/images/logo_clientmanagement.png" alt="Client management module logo" />
+    </article>
+
+    <article class="welcome-article">
+        <br />
+        <br />
+        <h1>Clients</h1>
+        <br />
+        <br />
+        <h2>Welcome to the Client Registry Management Data</h2>
+        <p>
+            This display allows you to efficiently manage your customer database with features to view, edit, delete, add customer records, and more.
+        </p>
+    </article>
+</section>
+
+<div class="info-div">
+    <p>Keep the information organized and up-to-date with ease. Use this tool for customer management and enhance operational efficiency.</p>
+</div>
+
+<p id="navigationItens">
+    <a asp-action="Create">Create a new row for a new record</a>
+</p>
+<table class="table" id="navigationItens">
+    <thead>
+        <tr>
+            <th>Operations in each row</th>
+            <th>
+                @Html.DisplayNameFor(model => model.FirstName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LastName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Street)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DoorAndFloor)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.City)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PostalCode)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FiscalCode)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Phone)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RegistrationDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ContractType)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FidelizationType)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    <a id="navigationItens" asp-action="Edit" asp-route-id="@item.ClientId">Edit</a>
+                    <br />
+                    <a id="navigationItens" asp-action="Details" asp-route-id="@item.ClientId">Details</a>
+                    <br />
+                    <a id="navigationItens" asp-action="Delete" asp-route-id="@item.ClientId">Delete</a>
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FirstName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LastName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Street)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DoorAndFloor)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.City)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PostalCode)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FiscalCode)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Phone)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.RegistrationDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ContractType.Description)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FidelizationType.Description)
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
