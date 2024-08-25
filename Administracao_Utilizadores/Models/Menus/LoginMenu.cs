@@ -1,5 +1,6 @@
 ﻿using Administracao_Utilizadores.Interfaces;
 using Administracao_Utilizadores.Utilities;
+using General_Utility;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,6 +12,7 @@ namespace Administracao_Utilizadores.Models.Menus
     internal class LoginMenu
     {
         private readonly ISession _session;
+
         public LoginMenu(ISession session)
         {
             _session = session;
@@ -24,7 +26,7 @@ namespace Administracao_Utilizadores.Models.Menus
             {
                 Console.Clear();
                 Console.ForegroundColor = ConsoleColor.White;
-                ConsoleUtility.WriteTitle("Main Menu");
+                Utility.WriteTitle("RSGymPT - Main Menu");
                 Console.WriteLine("[1] - Login");
                 Console.WriteLine("[Esc] - Exit", "\n\n");
 
@@ -46,7 +48,7 @@ namespace Administracao_Utilizadores.Models.Menus
                             }
                             break;
                         default:
-                            ConsoleUtility.WriteError("Invalid option.");
+                            Utility.WriteError("Invalid option.");
                             break;
                     }
                 }
@@ -59,12 +61,12 @@ namespace Administracao_Utilizadores.Models.Menus
 
         private void Login()
         {
-            ConsoleUtility.WriteInformation("For better experieance extend the console width.");
-            ConsoleUtility.WriteInformation("Default User, Username: 'milena' | Password: 'milena00'");
+            Utility.WriteInformation("For better experience extend the console width.");
+            Utility.WriteInformation("Default User - Username: 'milena' | Password: 'milena00'");
             do
             {
                 Console.Clear();
-                ConsoleUtility.WriteTitle("Login Menu");
+                Utility.WriteTitle("Login Menu");
                 Console.WriteLine("Insert username and password or press [ESC] to return to Main Menu.\n");
                 ReadLineInfo rInfoUsername = ConsoleUtility.ReadInput("Username: ");
                 if (rInfoUsername.Exit)
@@ -82,12 +84,12 @@ namespace Administracao_Utilizadores.Models.Menus
 
                 if (_session.IsLogged)
                 {
-                    ConsoleUtility.WriteSucess("Login successful.");
+                    Utility.WriteSucess("Login successful.");
                     break;
                 }
                 else
                 {
-                    ConsoleUtility.WriteError("Invalid username or password.");
+                    Utility.WriteError("Invalid username or password.");
                 }
             } while (true);
 

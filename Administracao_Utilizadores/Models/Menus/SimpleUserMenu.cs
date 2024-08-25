@@ -1,6 +1,7 @@
 ﻿using Administracao_Utilizadores.Data.Interfaces;
 using Administracao_Utilizadores.Interfaces;
 using Administracao_Utilizadores.Utilities;
+using General_Utility;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,6 +15,7 @@ namespace Administracao_Utilizadores.Models.Menus
         private readonly IUserRepository _userRepository;
         private readonly ISession _session;
         private readonly (ConsoleColor background, ConsoleColor foreground) _color;
+
         public SimpleUserMenu(IUserRepository userRepository, ISession session, (ConsoleColor background, ConsoleColor foreground) color)
             : base(userRepository, session, color)
         {
@@ -30,7 +32,7 @@ namespace Administracao_Utilizadores.Models.Menus
             do
             {
                 Console.Clear();
-                ConsoleUtility.WriteTitle("Simple User Menu", "ROLE: " + _session.User.Role.ToString(), fontColor: _color.foreground);
+                Utility.WriteTitle("Simple User Menu", "ROLE: " + _session.User.Role.ToString(), fontColor: _color.foreground);
                 Console.ForegroundColor = _color.foreground;
                 Console.WriteLine("[1] - List");
                 Console.WriteLine("[Esc] - Logout");
@@ -40,12 +42,12 @@ namespace Administracao_Utilizadores.Models.Menus
 
                 if (key.Key == ConsoleKey.Escape)
                 {
-                    ConsoleKeyInfo answer = ConsoleUtility.WriteQuestionAndChoice("Do you really want to logout?", $"\n[{_session.User.Username}] -> ");
+                    ConsoleKeyInfo answer = Utility.WriteQuestionAndChoice("Do you really want to logout?", $"\n[{_session.User.Username}] -> ");
 
                     if (answer.KeyChar == '1')
                     {
                         _session.Logout();
-                        ConsoleUtility.WriteSucess("Logout sucessfully.");
+                        Utility.WriteSucess("Logout sucessfully.");
                         exit = true;
                     }
                 }
@@ -55,10 +57,10 @@ namespace Administracao_Utilizadores.Models.Menus
                     {
                         case '1':
                             ShowList();
-                            ConsoleUtility.WriteInformation();
+                            Utility.WriteInformation();
                             break;
                         default:
-                            ConsoleUtility.WriteError("Invalid option.");
+                            Utility.WriteError("Invalid option.");
                             break;
                     }
                 }

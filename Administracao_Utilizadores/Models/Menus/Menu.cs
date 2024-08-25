@@ -1,6 +1,7 @@
 ﻿using Administracao_Utilizadores.Data.Interfaces;
 using Administracao_Utilizadores.Interfaces;
 using Administracao_Utilizadores.Utilities;
+using General_Utility;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -28,7 +29,7 @@ namespace Administracao_Utilizadores.Models.Menus
         protected void ShowList()
         {
             Console.Clear();
-            ConsoleUtility.WriteTitle("List of users", "ROLE: " + _session.User.Role.ToString(), fontColor: _color.foreground);
+            Utility.WriteTitle("List of users", "ROLE: " + _session.User.Role.ToString(), fontColor: _color.foreground);
             var listQuery = _userRepository.GetAll().OrderBy(u => u.Id);
             ConsoleUtility.ShowUserList(listQuery);
         }
@@ -38,21 +39,21 @@ namespace Administracao_Utilizadores.Models.Menus
         protected virtual ReadLineInfo AskRole()
         {
             bool exit = false;
-            ReadLineInfo rInfoEnum;
+            ReadLineInfo readInfoEnum;
             do
             {
-                rInfoEnum = ConsoleUtility.ReadInput(
-               "Type of users\n\t 1. Admin\n\t 2. PowerUser\n\t 3. SimpleUser\n\n\n What user do you pretend to create?",
+                readInfoEnum = ConsoleUtility.ReadInput(
+               "Type of users\n\t 1. Admin\n\t 2. PowerUser\n\t 3. SimpleUser\n\n\n What user do you pretend to create? Or press [ESC] to return to Menu.",
                 $"\n[{_session.User.Username}] -> ");
 
-                if (rInfoEnum.Exit)
+                if (readInfoEnum.Exit)
                 {
-                    return rInfoEnum;
+                    return readInfoEnum;
                 }
 
-                if (rInfoEnum.Text != "1" && rInfoEnum.Text != "2" && rInfoEnum.Text != "3")
+                if (readInfoEnum.Text != "1" && readInfoEnum.Text != "2" && readInfoEnum.Text != "3")
                 {
-                    ConsoleUtility.WriteError("Invalid choice input.");
+                    Utility.WriteError("Invalid choice input.");
                 }
                 else
                 {
@@ -60,28 +61,27 @@ namespace Administracao_Utilizadores.Models.Menus
                 }
 
             } while (exit == false);
-            return rInfoEnum;
+            return readInfoEnum;
         }
 
         protected virtual ReadLineInfo AskFirstName()
         {
-
             bool exit = false;
-            ReadLineInfo rInfoName;
+            ReadLineInfo readInfoName;
             do
             {
-                rInfoName = ConsoleUtility.ReadInput(
-                "Insert the first name:",
+                readInfoName = ConsoleUtility.ReadInput(
+                "Insert the first name or press [ESC] to return to Menu:",
                  $"\n[{_session.User.Username}] -> ");
 
-                if (rInfoName.Exit)
+                if (readInfoName.Exit)
                 {
-                    return rInfoName;
+                    return readInfoName;
                 }
 
-                if (string.IsNullOrWhiteSpace(rInfoName.Text) || rInfoName.Text.Length > 20)
+                if (string.IsNullOrWhiteSpace(readInfoName.Text) || readInfoName.Text.Length > 20)
                 {
-                    ConsoleUtility.WriteError("First name cant have more than 20 chars.");
+                    Utility.WriteError("First name cant have more than 20 chars.");
                 }
                 else
                 {
@@ -89,28 +89,27 @@ namespace Administracao_Utilizadores.Models.Menus
                 }
 
             } while (exit == false);
-            return rInfoName;
+            return readInfoName;
         }
 
         protected virtual ReadLineInfo AskLastName()
         {
-
             bool exit = false;
-            ReadLineInfo rInfoName;
+            ReadLineInfo readInfoName;
             do
             {
-                rInfoName = ConsoleUtility.ReadInput(
-                "Insert the last name:",
+                readInfoName = ConsoleUtility.ReadInput(
+                "Insert the last name or press [ESC] to return to Menu:",
                  $"\n[{_session.User.Username}] -> ");
 
-                if (rInfoName.Exit)
+                if (readInfoName.Exit)
                 {
-                    return rInfoName;
+                    return readInfoName;
                 }
 
-                if (string.IsNullOrWhiteSpace(rInfoName.Text) || rInfoName.Text.Length > 20)
+                if (string.IsNullOrWhiteSpace(readInfoName.Text) || readInfoName.Text.Length > 20)
                 {
-                    ConsoleUtility.WriteError("Last name cant have more than 20 chars.");
+                    Utility.WriteError("Last name cant have more than 20 chars.");
                 }
                 else
                 {
@@ -118,28 +117,27 @@ namespace Administracao_Utilizadores.Models.Menus
                 }
 
             } while (exit == false);
-            return rInfoName;
+            return readInfoName;
         }
 
         protected virtual ReadLineInfo AskBirthDate()
         {
-
             bool exit = false;
-            ReadLineInfo rInfoBirthDate;
+            ReadLineInfo readInfoBirthDate;
             do
             {
-                rInfoBirthDate = ConsoleUtility.ReadInput(
-                "Insert the birth date (yyyy-MM-dd):",
+                readInfoBirthDate = ConsoleUtility.ReadInput(
+                "Insert the birth date (yyyy-MM-dd) or press [ESC] to return to Menu:",
                  $"\n[{_session.User.Username}] -> ");
 
-                if (rInfoBirthDate.Exit)
+                if (readInfoBirthDate.Exit)
                 {
-                    return rInfoBirthDate;
+                    return readInfoBirthDate;
                 }
 
-                if (!(DateTime.TryParseExact(rInfoBirthDate.Text, "yyyy-MM-dd", CultureInfo.InvariantCulture, DateTimeStyles.None, out var _)))
+                if (!(DateTime.TryParseExact(readInfoBirthDate.Text, "yyyy-MM-dd", CultureInfo.InvariantCulture, DateTimeStyles.None, out var _)))
                 {
-                    ConsoleUtility.WriteError("Invalid date format.");
+                    Utility.WriteError("Invalid date format.");
                 }
                 else
                 {
@@ -147,35 +145,35 @@ namespace Administracao_Utilizadores.Models.Menus
                 }
 
             } while (exit == false);
-            return rInfoBirthDate;
+            return readInfoBirthDate;
         }
 
         protected virtual ReadLineInfo AskEmail()
         {
             bool exit = false;
-            ReadLineInfo rInfoEmail;
+            ReadLineInfo readInfoEmail;
             do
             {
-                rInfoEmail = ConsoleUtility.ReadInput(
-               "Insert the email:",
+                readInfoEmail = ConsoleUtility.ReadInput(
+               "Insert the email or press [ESC] to return to Menu:",
                 $"\n[{_session.User.Username}] -> ");
 
-                if (rInfoEmail.Exit)
+                if (readInfoEmail.Exit)
                 {
-                    return rInfoEmail;
+                    return readInfoEmail;
                 }
 
-                if (string.IsNullOrWhiteSpace(rInfoEmail.Text) || rInfoEmail.Text.Contains("@") == false)
+                if (string.IsNullOrWhiteSpace(readInfoEmail.Text) || readInfoEmail.Text.Contains("@") == false)
                 {
-                    ConsoleUtility.WriteError("Invalid email format.");
+                    Utility.WriteError("Invalid email format.");
                 }
-                else if (_userRepository.GetByEmail(rInfoEmail.Text) != null)
+                else if (_userRepository.GetByEmail(readInfoEmail.Text) != null)
                 {
-                    ConsoleUtility.WriteError("Email already exists.");
+                    Utility.WriteError("Email already exists.");
                 }
-                else if (rInfoEmail.Text.Length > 256)
+                else if (readInfoEmail.Text.Length > 256)
                 {
-                    ConsoleUtility.WriteError("Email cant have more than 256 chars.");
+                    Utility.WriteError("Email cant have more than 256 chars.");
                 }
                 else
                 {
@@ -183,27 +181,27 @@ namespace Administracao_Utilizadores.Models.Menus
                 }
 
             } while (exit == false);
-            return rInfoEmail;
+            return readInfoEmail;
         }
 
         protected virtual ReadLineInfo AskPhone()
         {
             bool exit = false;
-            ReadLineInfo rInfoPhone;
+            ReadLineInfo readInfoPhone;
             do
             {
-                rInfoPhone = ConsoleUtility.ReadInput(
-               "Insert the phone number:",
+                readInfoPhone = ConsoleUtility.ReadInput(
+               "Insert the phone number (+XXXYYYYYYYYY) or press [ESC] to return to Menu:",
                 $"\n[{_session.User.Username}] -> ");
 
-                if (rInfoPhone.Exit)
+                if (readInfoPhone.Exit)
                 {
-                    return rInfoPhone;
+                    return readInfoPhone;
                 }
 
-                if (string.IsNullOrWhiteSpace(rInfoPhone.Text) || rInfoPhone.Text.Length != 9)
+                if (string.IsNullOrWhiteSpace(readInfoPhone.Text) || readInfoPhone.Text.Length != 13)
                 {
-                    ConsoleUtility.WriteError("Phone number must have 9 digits.");
+                    Utility.WriteError("Phone number must have 13 digits.");
                 }
                 else
                 {
@@ -211,31 +209,31 @@ namespace Administracao_Utilizadores.Models.Menus
                 }
 
             } while (exit == false);
-            return rInfoPhone;
+            return readInfoPhone;
         }
 
         protected virtual ReadLineInfo AskUsername()
         {
             bool exit = false;
-            ReadLineInfo rInfoUserName;
+            ReadLineInfo readInfoUserName;
             do
             {
-                rInfoUserName = ConsoleUtility.ReadInput(
-               "Insert the username:",
+                readInfoUserName = ConsoleUtility.ReadInput(
+               "Insert the username or press [ESC] to return to Menu:",
                 $"\n[{_session.User.Username}] -> ");
 
-                if (rInfoUserName.Exit)
+                if (readInfoUserName.Exit)
                 {
-                    return rInfoUserName;
+                    return readInfoUserName;
                 }
 
-                if (string.IsNullOrWhiteSpace(rInfoUserName.Text) || rInfoUserName.Text.Length > 20)
+                if (string.IsNullOrWhiteSpace(readInfoUserName.Text) || readInfoUserName.Text.Length > 20)
                 {
-                    ConsoleUtility.WriteError("Username must have less than 20 characters.");
+                    Utility.WriteError("Username must have less than 20 characters.");
                 }
-                else if (_userRepository.GetByUsername(rInfoUserName.Text) != null)
+                else if (_userRepository.GetByUsername(readInfoUserName.Text) != null)
                 {
-                    ConsoleUtility.WriteError("Username already exists.");
+                    Utility.WriteError("Username already exists.");
                 }
                 else
                 {
@@ -243,28 +241,28 @@ namespace Administracao_Utilizadores.Models.Menus
                 }
 
             } while (exit == false);
-            return rInfoUserName;
+            return readInfoUserName;
         }
 
         protected virtual ReadLineInfo AskPassword()
         {
 
             bool exit = false;
-            ReadLineInfo rInfoPassword;
+            ReadLineInfo readInfoPassword;
             do
             {
-                rInfoPassword = ConsoleUtility.ReadInputPasswordForm(
-                "Insert the password:",
+                readInfoPassword = ConsoleUtility.ReadInputPasswordForm(
+                "Insert the password or press [ESC] to return to Menu:",
                $"\n[{_session.User.Username}] -> ");
 
-                if (rInfoPassword.Exit)
+                if (readInfoPassword.Exit)
                 {
-                    return rInfoPassword;
+                    return readInfoPassword;
                 }
 
-                if (string.IsNullOrWhiteSpace(rInfoPassword.Text) || rInfoPassword.Text.Length > 8)
+                if (string.IsNullOrWhiteSpace(readInfoPassword.Text) || readInfoPassword.Text.Length < 8)
                 {
-                    ConsoleUtility.WriteError("Password must have 8 characters minimum.");
+                    Utility.WriteError("Password must have 8 characters minimum.");
                 }
                 else
                 {
@@ -272,11 +270,9 @@ namespace Administracao_Utilizadores.Models.Menus
                 }
 
             } while (exit == false);
-            return rInfoPassword;
+            return readInfoPassword;
         }
 
-
         #endregion
-
     }
 }

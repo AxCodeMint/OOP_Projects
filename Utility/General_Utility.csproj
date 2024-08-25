@@ -4,17 +4,16 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{B8C29D4C-5294-4FC2-A785-BE622827DB9D}</ProjectGuid>
-    <OutputType>Exe</OutputType>
-    <RootNamespace>Administracao_Utilizadores</RootNamespace>
-    <AssemblyName>Administracao_Utilizadores</AssemblyName>
+    <ProjectGuid>{74F64F5C-11FC-4086-A878-232364323441}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Utility</RootNamespace>
+    <AssemblyName>Utility</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -24,7 +23,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -43,35 +41,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Data\Interfaces\IUserRepository.cs" />
-    <Compile Include="Data\UserRepository.cs" />
-    <Compile Include="Enums\EnumRole.cs" />
-    <Compile Include="Interfaces\ISession.cs" />
-    <Compile Include="Models\AdminUser.cs" />
-    <Compile Include="Models\CredentialsModel.cs" />
-    <Compile Include="Models\Menus\AdminUserMenu.cs" />
-    <Compile Include="Models\Menus\LoginMenu.cs" />
-    <Compile Include="Models\Menus\Menu.cs" />
-    <Compile Include="Models\Menus\PowerUserMenu.cs" />
-    <Compile Include="Models\Menus\SimpleUserMenu.cs" />
-    <Compile Include="Models\PowerUser.cs" />
-    <Compile Include="Models\ReadLineInfo.cs" />
-    <Compile Include="Models\Session.cs" />
-    <Compile Include="Models\SimpleUser.cs" />
-    <Compile Include="Models\User.cs" />
-    <Compile Include="Program.cs" />
+    <Compile Include="Utility.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Utilities\ConsoleUtility.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="App.config" />
-    <None Include="ClassDiagram1.cd" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Utility\General_Utility.csproj">
-      <Project>{74f64f5c-11fc-4086-a878-232364323441}</Project>
-      <Name>General_Utility</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

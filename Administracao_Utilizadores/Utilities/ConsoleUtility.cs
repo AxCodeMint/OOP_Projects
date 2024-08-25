@@ -10,135 +10,6 @@ namespace Administracao_Utilizadores.Utilities
 {
     public static class ConsoleUtility
     {
-        public static void SetUnicodeConsole()
-        {
-            Console.OutputEncoding = System.Text.Encoding.UTF8;
-
-        }
-        public static void WriteTitle(string title, string profile = "", ConsoleColor backgroundColor = ConsoleColor.Black, ConsoleColor fontColor = ConsoleColor.White)
-        {
-            ConsoleColor oldBackgroundColor = Console.BackgroundColor;
-            ConsoleColor oldForegroundColor = Console.ForegroundColor;
-
-            Console.BackgroundColor = backgroundColor;
-            Console.ForegroundColor = fontColor;
-            Console.WriteLine("┌" + new string('─', 100) + "┐");
-            Console.WriteLine($"│{title.ToUpper(),-50}{profile,-50}│");
-            Console.WriteLine("└" + new string('─', 100) + "┘");
-            Console.WriteLine();
-
-            Console.BackgroundColor = oldBackgroundColor;
-            Console.ForegroundColor = oldForegroundColor;
-
-        }
-
-        public static ConsoleKeyInfo WriteQuestionAndChoice(string question, string prompt = "")
-        {
-            bool exit = false;
-            ConsoleKeyInfo key;
-
-            ConsoleColor oldBackgroundColor = Console.BackgroundColor;
-            ConsoleColor oldForegroundColor = Console.ForegroundColor;
-
-            do
-            {
-                Console.Clear();
-                Console.BackgroundColor = ConsoleColor.DarkYellow;
-                Console.ForegroundColor = ConsoleColor.White;
-                Console.Write($"{question}");
-                Console.WriteLine($"\n[1] Yes \n[2]/[ESC] No");
-                if (!string.IsNullOrEmpty(prompt))
-                {
-                    Console.Write(prompt);
-                }
-
-                key = Console.ReadKey(true);
-                Console.WriteLine();
-
-                if (key.Key == ConsoleKey.Escape)
-                {
-                    exit = true;
-                }
-                else
-                {
-                    switch (key.KeyChar)
-                    {
-                        case '1':
-                            exit = true;
-                            break;
-                        case '2':
-                            exit = true;
-                            break;
-                        default:
-                            Console.BackgroundColor = oldBackgroundColor;
-                            Console.ForegroundColor = oldForegroundColor;
-                            WriteError("Invalid option.");
-                            break;
-                    }
-                }
-            } while (exit == false);
-
-            Console.BackgroundColor = oldBackgroundColor;
-            Console.ForegroundColor = oldForegroundColor;
-
-            return key;
-        }
-
-        public static void WriteError(string text)
-        {
-            ConsoleColor oldBackgroundColor = Console.BackgroundColor;
-            ConsoleColor oldForegroundColor = Console.ForegroundColor;
-
-            Console.WriteLine();
-            Console.BackgroundColor = ConsoleColor.Red;
-            Console.ForegroundColor = ConsoleColor.White;
-            Console.WriteLine($"Error: {text}");
-            Console.WriteLine($"Please press any key to continue.");
-            Console.BackgroundColor = oldBackgroundColor;
-            Console.ForegroundColor = oldForegroundColor;
-            Console.ReadKey(true);
-            Console.WriteLine();
-        }
-
-        public static void WriteInformation(string text = "")
-        {
-            ConsoleColor oldBackgroundColor = Console.BackgroundColor;
-            ConsoleColor oldForegroundColor = Console.ForegroundColor;
-
-
-            Console.BackgroundColor = ConsoleColor.Blue;
-            Console.ForegroundColor = ConsoleColor.White;
-            Console.WriteLine();
-            if (!string.IsNullOrEmpty(text))
-            {
-                Console.WriteLine($"Info: {text}");
-            }
-            Console.WriteLine($"Please press any key to continue.");
-            Console.BackgroundColor = oldBackgroundColor;
-            Console.ForegroundColor = oldForegroundColor;
-            Console.WriteLine();
-            Console.ReadKey(true);
-
-        }
-
-        public static void WriteSucess(string text)
-        {
-            ConsoleColor oldBackgroundColor = Console.BackgroundColor;
-            ConsoleColor oldForegroundColor = Console.ForegroundColor;
-
-            Console.BackgroundColor = ConsoleColor.Green;
-            Console.ForegroundColor = ConsoleColor.White;
-
-            Console.WriteLine();
-            Console.WriteLine($"Message: {text}");
-            Console.WriteLine($"Please press any key to continue.");
-            Console.BackgroundColor = oldBackgroundColor;
-            Console.ForegroundColor = oldForegroundColor;
-            Console.WriteLine();
-            Console.ReadKey(true);
-            
-        }
-
         public static ReadLineInfo ReadInput(string initialText = "", string promptName = "")
         {
             ReadLineInfo readInfo = new ReadLineInfo();
@@ -189,7 +60,7 @@ namespace Administracao_Utilizadores.Utilities
 
         public static ReadLineInfo ReadInputPasswordForm(string initText, string promptPrefix = "")
         {
-            var rInfo = new ReadLineInfo();
+            var readInfo = new ReadLineInfo();
             string password = string.Empty;         
             string mask = string.Empty;           
 
@@ -207,8 +78,8 @@ namespace Administracao_Utilizadores.Utilities
 
                 if (key.Key == ConsoleKey.Escape)        
                 {
-                    rInfo.Exit = true;
-                    return rInfo;
+                    readInfo.Exit = true;
+                    return readInfo;
                 }
 
                 if (key.Key == ConsoleKey.Backspace && password.Length > 0) 
@@ -234,8 +105,8 @@ namespace Administracao_Utilizadores.Utilities
 
             Console.WriteLine();
 
-            rInfo.Text = password;
-            return rInfo;
+            readInfo.Text = password;
+            return readInfo;
         }
 
         public static void ShowUserDetails(User user)
@@ -303,7 +174,6 @@ namespace Administracao_Utilizadores.Utilities
             ConsoleColor oldBackgroundColor = Console.BackgroundColor;
             ConsoleColor oldForegroundColor = Console.ForegroundColor;
 
-            // Cabeçalho da tabela com separadores
             Console.BackgroundColor = ConsoleColor.Gray;
             Console.ForegroundColor = ConsoleColor.Black;
 

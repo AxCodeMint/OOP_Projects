@@ -15,11 +15,11 @@ namespace Administracao_Utilizadores.Data
 
         public void SeedUsers()
         {
-            var user01 = new PowerUser("Joao","Artur", new DateTime(1994, 05, 15), "jartur@gmail.com", "939567335", "jartur", "passpass");
+            var user01 = new PowerUser("Joao","Artur", new DateTime(1994, 05, 15), "jartur@gmail.com", "+351939567335", "jartur", "passpass");
 
-            var user02 = new SimpleUser("Joana", "Teresa", new DateTime(1990, 08, 03), "jtersa@gmail.com", "969544765", "jteresa", "passpass");
+            var user02 = new SimpleUser("Joana", "Teresa", new DateTime(1990, 08, 03), "jtersa@gmail.com", "+351969544765", "jteresa", "passpass");
 
-            var user03 = new AdminUser("Milena","Reis", new DateTime(1985, 12, 25), "mreis@gmail.com", "929465613", "milena", "milena00");
+            var user03 = new AdminUser("Milena","Reis", new DateTime(1985, 12, 25), "mreis@gmail.com", "+351929465613", "milena", "milena00");
 
             AddUser(user01);
             AddUser(user02);

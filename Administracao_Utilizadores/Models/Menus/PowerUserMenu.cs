@@ -1,6 +1,7 @@
 ﻿using Administracao_Utilizadores.Data.Interfaces;
 using Administracao_Utilizadores.Interfaces;
 using Administracao_Utilizadores.Utilities;
+using General_Utility;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,6 +15,7 @@ namespace Administracao_Utilizadores.Models.Menus
         private readonly IUserRepository _userRepository;
         private readonly ISession _session;
         private readonly (ConsoleColor background, ConsoleColor foreground) _color;
+
         public PowerUserMenu(IUserRepository userRepository, ISession session, (ConsoleColor background, ConsoleColor foreground) color)
             : base(userRepository, session, color)
         {
@@ -30,7 +32,7 @@ namespace Administracao_Utilizadores.Models.Menus
             do
             {
                 Console.Clear();
-                ConsoleUtility.WriteTitle("Power User Menu", "ROLE: " + _session.User.Role.ToString(), fontColor: _color.foreground);
+                Utility.WriteTitle("Power User Menu", "ROLE: " + _session.User.Role.ToString(), fontColor: _color.foreground);
                 Console.ForegroundColor = _color.foreground;
                 Console.WriteLine("[1] - Search by name");
                 Console.WriteLine("[2] - List");
@@ -41,12 +43,12 @@ namespace Administracao_Utilizadores.Models.Menus
 
                 if (key.Key == ConsoleKey.Escape)
                 {
-                    ConsoleKeyInfo answer = ConsoleUtility.WriteQuestionAndChoice("Do you really want to logout?", $"\n[{_session.User.Username}] -> ");
+                    ConsoleKeyInfo answer = Utility.WriteQuestionAndChoice("Do you really want to logout?", $"\n[{_session.User.Username}] -> ");
 
                     if (answer.KeyChar == '1')
                     {
                         _session.Logout();
-                        ConsoleUtility.WriteSucess("Logout sucessfully.");
+                        Utility.WriteSucess("Logout sucessfully.");
                         exit = true;
                     }
                 }
@@ -59,10 +61,10 @@ namespace Administracao_Utilizadores.Models.Menus
                             break;
                         case '2':
                             ShowList();
-                            ConsoleUtility.WriteInformation();
+                            Utility.WriteInformation();
                             break;
                         default:
-                            ConsoleUtility.WriteError("Invalid option.");
+                            Utility.WriteError("Invalid option.");
                             break;
                     }
                 }
@@ -81,7 +83,7 @@ namespace Administracao_Utilizadores.Models.Menus
             do
             {
                 Console.Clear();
-                ConsoleUtility.WriteTitle("Search By Name", "ROLE: " + _session.User.Role.ToString(), fontColor: _color.foreground);
+                Utility.WriteTitle("Search By Name", "ROLE: " + _session.User.Role.ToString(), fontColor: _color.foreground);
                 ReadLineInfo readInfo = ConsoleUtility.ReadInput("Type the name you want to search or press [ESC] to return to Menu.", $"\n[{_session.User.Username}] -> ");
 
                 if (readInfo.Exit)
@@ -91,16 +93,16 @@ namespace Administracao_Utilizadores.Models.Menus
 
                 List<User> user = _userRepository.GetUsersByName(readInfo.Text);
 
-                if (user != null)
+                if (user != null && user.Any() == true)
                 {
                     Console.WriteLine();
                     ConsoleUtility.ShowUserList(user);
-                    ConsoleUtility.WriteInformation();
+                    Utility.WriteInformation();
                     exit = true;
                 }
                 else
                 {
-                    ConsoleUtility.WriteError("User not found.");
+                    Utility.WriteError("User not found.");
                 }
 
             } while (exit == false);

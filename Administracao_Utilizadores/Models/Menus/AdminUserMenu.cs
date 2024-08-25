@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
+using General_Utility;
 
 namespace Administracao_Utilizadores.Models.Menus
 {
@@ -17,6 +18,7 @@ namespace Administracao_Utilizadores.Models.Menus
         private readonly IUserRepository _userRepository;
         private readonly ISession _session;
         private readonly (ConsoleColor background, ConsoleColor foreground) _color;
+
         public AdminUserMenu(IUserRepository userRepository, ISession session, (ConsoleColor background, ConsoleColor foreground) color)
             : base(userRepository, session, color)
         {
@@ -33,7 +35,7 @@ namespace Administracao_Utilizadores.Models.Menus
             do
             {
                 Console.Clear();
-                ConsoleUtility.WriteTitle("Administrator Menu", "ROLE: " + _session.User.Role.ToString(), fontColor: _color.foreground);
+                Utility.WriteTitle("Administrator Menu", "ROLE: " + _session.User.Role.ToString(), fontColor: _color.foreground);
                 Console.ForegroundColor = _color.foreground;
                 Console.WriteLine("[1] - Create users");
                 Console.WriteLine("[2] - Change data");
@@ -47,12 +49,12 @@ namespace Administracao_Utilizadores.Models.Menus
 
                 if (key.Key == ConsoleKey.Escape)
                 {
-                    ConsoleKeyInfo answer = ConsoleUtility.WriteQuestionAndChoice("Do you really want to logout?", $"\n[{_session.User.Username}] -> ");
+                    ConsoleKeyInfo answer = Utility.WriteQuestionAndChoice("Do you really want to logout?", $"\n[{_session.User.Username}] -> ");
 
                     if (answer.KeyChar == '1')
                     {
                         _session.Logout();
-                        ConsoleUtility.WriteSucess("Logout sucessfully.");
+                        Utility.WriteSucess("Logout sucessfully.");
                         exit = true;
                     }
                 }
@@ -67,12 +69,12 @@ namespace Administracao_Utilizadores.Models.Menus
                                 if (createUser != null)
                                 {
                                     _userRepository.AddUser(createUser);
-                                    ConsoleUtility.WriteSucess("User created successfully.");
+                                    Utility.WriteSucess("User created successfully.");
                                 }
                             }
                             catch (Exception ex)
                             {
-                                ConsoleUtility.WriteError(ex.Message);
+                                Utility.WriteError(ex.Message);
                                 Console.Clear();
                             }
 
@@ -84,12 +86,12 @@ namespace Administracao_Utilizadores.Models.Menus
                                 if (editUser != null)
                                 {
                                     _userRepository.UpdateUser(editUser);
-                                    ConsoleUtility.WriteSucess("User updated successfully.");
+                                    Utility.WriteSucess("User updated successfully.");
                                 }
                             }
                             catch (Exception ex)
                             {
-                                ConsoleUtility.WriteError(ex.Message);
+                                Utility.WriteError(ex.Message);
                                 Console.Clear();
                             }
 
@@ -102,10 +104,10 @@ namespace Administracao_Utilizadores.Models.Menus
                             break;
                         case '5':
                             ShowList();
-                            ConsoleUtility.WriteInformation();
+                            Utility.WriteInformation();
                             break;
                         default:
-                            ConsoleUtility.WriteError("Invalid option.");
+                            Utility.WriteError("Invalid option.");
                             break;
                     }
                 }
@@ -120,7 +122,7 @@ namespace Administracao_Utilizadores.Models.Menus
         private User CreateUser()
         {
             Console.Clear();
-            ConsoleUtility.WriteTitle("Create User", "ROLE: " + _session.User.Role.ToString(), fontColor: _color.foreground);
+            Utility.WriteTitle("Create User", "ROLE: " + _session.User.Role.ToString(), fontColor: _color.foreground);
             bool next = false;
 
             ReadLineInfo readInfoEnum;
@@ -130,7 +132,7 @@ namespace Administracao_Utilizadores.Models.Menus
                 if (readInfoEnum.Exit)
                 {
 
-                    ConsoleKeyInfo keyTypedQuestion = ConsoleUtility.WriteQuestionAndChoice("Do you really want to go back to menu ? Unsaved changes will be lost.", $"\n[{_session.User.Username}] -> ");
+                    ConsoleKeyInfo keyTypedQuestion = Utility.WriteQuestionAndChoice("Do you really want to go back to menu? Unsaved changes will be lost.", $"\n[{_session.User.Username}] -> ");
                     Console.Clear();
                     if (keyTypedQuestion.KeyChar == '1')
                     {
@@ -154,7 +156,7 @@ namespace Administracao_Utilizadores.Models.Menus
                 if (readInfoFirstName.Exit)
                 {
 
-                    ConsoleKeyInfo keyTypedQuestion = ConsoleUtility.WriteQuestionAndChoice("Do you really want to go back to menu ? Unsaved changes will be lost.", $"\n[{_session.User.Username}] -> ");
+                    ConsoleKeyInfo keyTypedQuestion = Utility.WriteQuestionAndChoice("Do you really want to go back to menu? Unsaved changes will be lost.", $"\n[{_session.User.Username}] -> ");
                     Console.Clear();
                     if (keyTypedQuestion.KeyChar == '1')
                     {
@@ -176,7 +178,7 @@ namespace Administracao_Utilizadores.Models.Menus
                 if (readInfoLastName.Exit)
                 {
 
-                    ConsoleKeyInfo keyTypedQuestion = ConsoleUtility.WriteQuestionAndChoice("Do you really want to go back to menu ? Unsaved changes will be lost.", $"\n[{_session.User.Username}] -> ");
+                    ConsoleKeyInfo keyTypedQuestion = Utility.WriteQuestionAndChoice("Do you really want to go back to menu? Unsaved changes will be lost.", $"\n[{_session.User.Username}] -> ");
                     Console.Clear();
                     if (keyTypedQuestion.KeyChar == '1')
                     {
@@ -198,7 +200,7 @@ namespace Administracao_Utilizadores.Models.Menus
                 if (readInfoBirthDate.Exit)
                 {
 
-                    ConsoleKeyInfo keyTypedQuestion = ConsoleUtility.WriteQuestionAndChoice("Do you really want to go back to menu ? Unsaved changes will be lost.", $"\n[{_session.User.Username}] -> ");
+                    ConsoleKeyInfo keyTypedQuestion = Utility.WriteQuestionAndChoice("Do you really want to go back to menu? Unsaved changes will be lost.", $"\n[{_session.User.Username}] -> ");
                     Console.Clear();
                     if (keyTypedQuestion.KeyChar == '1')
                     {
@@ -221,7 +223,7 @@ namespace Administracao_Utilizadores.Models.Menus
                 if (readInfoEmail.Exit)
                 {
 
-                    ConsoleKeyInfo keyTypedQuestion = ConsoleUtility.WriteQuestionAndChoice("Do you really want to go back to menu ? Unsaved changes will be lost.", $"\n[{_session.User.Username}] -> ");
+                    ConsoleKeyInfo keyTypedQuestion = Utility.WriteQuestionAndChoice("Do you really want to go back to menu? Unsaved changes will be lost.", $"\n[{_session.User.Username}] -> ");
                     Console.Clear();
                     if (keyTypedQuestion.KeyChar == '1')
                     {
@@ -243,7 +245,7 @@ namespace Administracao_Utilizadores.Models.Menus
                 if (readInfoPhone.Exit)
                 {
 
-                    ConsoleKeyInfo keyTypedQuestion = ConsoleUtility.WriteQuestionAndChoice("Do you really want to go back to menu ? Unsaved changes will be lost.", $"\n[{_session.User.Username}] -> ");
+                    ConsoleKeyInfo keyTypedQuestion = Utility.WriteQuestionAndChoice("Do you really want to go back to menu? Unsaved changes will be lost.", $"\n[{_session.User.Username}] -> ");
                     Console.Clear();
                     if (keyTypedQuestion.KeyChar == '1')
                     {
@@ -265,7 +267,7 @@ namespace Administracao_Utilizadores.Models.Menus
                 if (readInfoUserName.Exit)
                 {
 
-                    ConsoleKeyInfo keyTypedQuestion = ConsoleUtility.WriteQuestionAndChoice("Do you really want to go back to menu ? Unsaved changes will be lost.", $"\n[{_session.User.Username}] -> ");
+                    ConsoleKeyInfo keyTypedQuestion = Utility.WriteQuestionAndChoice("Do you really want to go back to menu? Unsaved changes will be lost.", $"\n[{_session.User.Username}] -> ");
                     Console.Clear();
                     if (keyTypedQuestion.KeyChar == '1')
                     {
@@ -287,7 +289,7 @@ namespace Administracao_Utilizadores.Models.Menus
                 if (readInfoPassword.Exit)
                 {
 
-                    ConsoleKeyInfo keyTypedQuestion = ConsoleUtility.WriteQuestionAndChoice("Do you really want to go back to menu ? Unsaved changes will be lost.", $"\n[{_session.User.Username}] -> ");
+                    ConsoleKeyInfo keyTypedQuestion = Utility.WriteQuestionAndChoice("Do you really want to go back to menu? Unsaved changes will be lost.", $"\n[{_session.User.Username}] -> ");
                     Console.Clear();
                     if (keyTypedQuestion.KeyChar == '1')
                     {
@@ -325,29 +327,29 @@ namespace Administracao_Utilizadores.Models.Menus
             Console.Clear();
             bool exit = false;
             ConsoleKeyInfo key;
-            ReadLineInfo rInfoProfileId;
+            ReadLineInfo readInfoProfileId;
 
             do
             {
                 Console.Clear();
-                ConsoleUtility.WriteTitle("Edit User", "ROLE: " + _session.User.Role.ToString(), fontColor: _color.foreground);
+                Utility.WriteTitle("Edit User", "ROLE: " + _session.User.Role.ToString(), fontColor: _color.foreground);
 
                 var listQuery = _userRepository.GetAll().OrderBy(u => u.Id);
                 ConsoleUtility.ShowUserList(listQuery);
                 Console.WriteLine();
 
-                rInfoProfileId = ConsoleUtility.ReadInput(
+                readInfoProfileId = ConsoleUtility.ReadInput(
                 "Insert the id that you want to edit or press [ESC] to go back to Menu.",
                     $"\n[{_session.User.Username}] -> ");
 
-                if (rInfoProfileId.Exit)
+                if (readInfoProfileId.Exit)
                 {
                     return default;
                 }
 
-                if (_userRepository.GetById(int.TryParse(rInfoProfileId.Text, out var id) ? id : 0) == null)
+                if (_userRepository.GetById(int.TryParse(readInfoProfileId.Text, out var id) ? id : 0) == null)
                 {
-                    ConsoleUtility.WriteError("Please enter a valid Id");
+                    Utility.WriteError("Please enter a valid Id");
                 }
                 else
                 {
@@ -358,7 +360,7 @@ namespace Administracao_Utilizadores.Models.Menus
 
             exit = false;
             ShowList();
-            User user = _userRepository.GetById(int.Parse(rInfoProfileId.Text));
+            User user = _userRepository.GetById(int.Parse(readInfoProfileId.Text));
 
             EnumRole role = user.Role;
             string firstName = user.FirstName;
@@ -372,7 +374,7 @@ namespace Administracao_Utilizadores.Models.Menus
             do
             {
                 Console.Clear();
-                ConsoleUtility.WriteTitle("Edit User", "ROLE: " + _session.User.Role.ToString(), fontColor: _color.foreground);
+                Utility.WriteTitle("Edit User", "ROLE: " + _session.User.Role.ToString(), fontColor: _color.foreground);
 
                 ConsoleUtility.ShowEditUser(user,
                     role != user.Role ? role.ToString() : null,
@@ -399,7 +401,7 @@ namespace Administracao_Utilizadores.Models.Menus
 
                 if (key.Key == ConsoleKey.Escape)
                 {
-                    ConsoleKeyInfo keyTypedQuestion = ConsoleUtility.WriteQuestionAndChoice("Do you really want to go back to menu ? Unsaved changes will be lost.", $"\n[{_session.User.Username}] -> ");
+                    ConsoleKeyInfo keyTypedQuestion = Utility.WriteQuestionAndChoice("Do you really want to go back to menu? Unsaved changes will be lost.", $"\n[{_session.User.Username}] -> ");
 
                     if (keyTypedQuestion.KeyChar == '1')
                     {
@@ -408,8 +410,8 @@ namespace Administracao_Utilizadores.Models.Menus
                 }
                 else if (key.Key == ConsoleKey.Enter)
                 {
-
-                    ConsoleUtility.WriteInformation("User about to be saved ...");
+                    Console.WriteLine();
+                    Utility.WriteInformation("User about to be saved ...");
                     user.Update(role, firstName,lastName, birthDate, email, phone, username, password);
                     return user;
                 }
@@ -420,7 +422,7 @@ namespace Administracao_Utilizadores.Models.Menus
                         case '1':
 
                             Console.Clear();
-                            ConsoleUtility.WriteTitle("Edit User", "ROLE: " + _session.User.Role.ToString(), fontColor: _color.foreground);
+                            Utility.WriteTitle("Edit User", "ROLE: " + _session.User.Role.ToString(), fontColor: _color.foreground);
                             ReadLineInfo readInfoEnumRole = AskRole();
                             if (readInfoEnumRole.Exit == false)
                             {
@@ -431,7 +433,7 @@ namespace Administracao_Utilizadores.Models.Menus
                         case '2':
 
                             Console.Clear();
-                            ConsoleUtility.WriteTitle("Edit User", "ROLE: " + _session.User.Role.ToString(), fontColor: _color.foreground);
+                            Utility.WriteTitle("Edit User", "ROLE: " + _session.User.Role.ToString(), fontColor: _color.foreground);
                             ReadLineInfo readInfoFirstName = AskFirstName();
                             if (readInfoFirstName.Exit == false)
                             {
@@ -442,7 +444,7 @@ namespace Administracao_Utilizadores.Models.Menus
                         case '3':
 
                             Console.Clear();
-                            ConsoleUtility.WriteTitle("Edit User", "ROLE: " + _session.User.Role.ToString(), fontColor: _color.foreground);
+                            Utility.WriteTitle("Edit User", "ROLE: " + _session.User.Role.ToString(), fontColor: _color.foreground);
                             ReadLineInfo readInfoLastName = AskLastName();
                             if (readInfoLastName.Exit == false)
                             {
@@ -453,7 +455,7 @@ namespace Administracao_Utilizadores.Models.Menus
                         case '4':
 
                             Console.Clear();
-                            ConsoleUtility.WriteTitle("Edit User", "ROLE: " + _session.User.Role.ToString(), fontColor: _color.foreground);
+                            Utility.WriteTitle("Edit User", "ROLE: " + _session.User.Role.ToString(), fontColor: _color.foreground);
                             ReadLineInfo readInfoBirthDate = AskBirthDate();
                             if (readInfoBirthDate.Exit == false)
                             {
@@ -464,7 +466,7 @@ namespace Administracao_Utilizadores.Models.Menus
                         case '5':
 
                             Console.Clear();
-                            ConsoleUtility.WriteTitle("Edit User", "ROLE: " + _session.User.Role.ToString(), fontColor: _color.foreground);
+                            Utility.WriteTitle("Edit User", "ROLE: " + _session.User.Role.ToString(), fontColor: _color.foreground);
                             ReadLineInfo readInfoEmail = AskEmail();
                             if (readInfoEmail.Exit == false)
                             {
@@ -475,7 +477,7 @@ namespace Administracao_Utilizadores.Models.Menus
                         case '6':
 
                             Console.Clear();
-                            ConsoleUtility.WriteTitle("Edit User", "ROLE: " + _session.User.Role.ToString(), fontColor: _color.foreground);
+                            Utility.WriteTitle("Edit User", "ROLE: " + _session.User.Role.ToString(), fontColor: _color.foreground);
                             ReadLineInfo readInfoPhone = AskPhone();
                             if (readInfoPhone.Exit == false)
                             {
@@ -486,7 +488,7 @@ namespace Administracao_Utilizadores.Models.Menus
                         case '7':
 
                             Console.Clear();
-                            ConsoleUtility.WriteTitle("Edit User", "ROLE: " + _session.User.Role.ToString(), fontColor: _color.foreground);
+                            Utility.WriteTitle("Edit User", "ROLE: " + _session.User.Role.ToString(), fontColor: _color.foreground);
                             ReadLineInfo readInfoPassword = AskPassword();
                             if (readInfoPassword.Exit == false)
                             {
@@ -496,7 +498,7 @@ namespace Administracao_Utilizadores.Models.Menus
                             break;
 
                         default:
-                            ConsoleUtility.WriteError("Invalid option.");
+                            Utility.WriteError("Invalid option.");
                             break;
                     }
                 }
@@ -514,7 +516,7 @@ namespace Administracao_Utilizadores.Models.Menus
                 do
                 {
                     Console.Clear();
-                    ConsoleUtility.WriteTitle("Search by Id", "ROLE: " + _session.User.Role.ToString(), fontColor: _color.foreground);
+                    Utility.WriteTitle("Search by Id", "ROLE: " + _session.User.Role.ToString(), fontColor: _color.foreground);
                     readInfo = ConsoleUtility.ReadInput(
                     "Type the id that you want to search or press [ESC] to go back to Menu.",
                     $"\n[{_session.User.Username}] -> ");
@@ -526,7 +528,7 @@ namespace Administracao_Utilizadores.Models.Menus
 
                     if (int.TryParse(readInfo.Text, out var _) == false)
                     {
-                        ConsoleUtility.WriteError("Please enter a valid integer.");
+                        Utility.WriteError("Please enter a valid integer.");
                     }
                     else
                     {
@@ -541,12 +543,12 @@ namespace Administracao_Utilizadores.Models.Menus
                 if (user != null)
                 {
                     ConsoleUtility.ShowUserDetails(user);
-                    ConsoleUtility.WriteInformation();
+                    Utility.WriteInformation();
                     exit = true;
                 }
                 else
                 {
-                    ConsoleUtility.WriteError("User not found.");
+                    Utility.WriteError("User not found.");
                 }
 
             } while (exit == false);

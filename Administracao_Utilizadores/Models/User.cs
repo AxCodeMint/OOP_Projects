@@ -11,7 +11,6 @@ namespace Administracao_Utilizadores.Models
 {
     public abstract class User
     {
-        private int _id;
         private EnumRole _role;
         private string _firstName;
         private string _lastName;
@@ -106,9 +105,9 @@ namespace Administracao_Utilizadores.Models
             get => _phone;
             private set
             {
-                if (string.IsNullOrWhiteSpace(value) || value.Length != 9)
+                if (string.IsNullOrWhiteSpace(value) || value.Length != 13)
                 {
-                    throw new ArgumentException("Phone number must have 9 digits.");
+                    throw new ArgumentException("Phone number must have 13 digits.");
                 }
 
                 _phone = value;

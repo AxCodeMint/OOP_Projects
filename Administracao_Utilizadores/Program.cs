@@ -5,16 +5,16 @@ using Administracao_Utilizadores.Models.Menus;
 using Administracao_Utilizadores.Models;
 using Administracao_Utilizadores.Utilities;
 using System;
+using General_Utility;
 
 
 namespace Administracao_Utilizadores
 {
     internal class Program
     {
-
         static void Main(string[] args)
         {
-            ConsoleUtility.SetUnicodeConsole();
+            Utility.SetUnicodeConsole();
             IUserRepository userRepository = new UserRepository();
             userRepository.SeedUsers();
             ISession session = new Session(userRepository);
@@ -39,7 +39,6 @@ namespace Administracao_Utilizadores
                         {
                             exit = false;
                         }
-
                     }
                     else
                     {
@@ -68,12 +67,11 @@ namespace Administracao_Utilizadores
 
                 } while (exit == false);
 
-                ConsoleUtility.WriteInformation("Bye!");
-
+                Utility.WriteInformation("Bye!");
             }
             catch (Exception ex)
             {
-                ConsoleUtility.WriteError(ex.Message);
+                Utility.WriteError(ex.Message);
             }
 
         }

@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Gestao_Clientes.DAL.Migrations
 {
     [DbContext(typeof(CA_RS11_P2_2_AlexandraMendes_DBContext))]
-    [Migration("20240818213557_01_Initial")]
+    [Migration("20240825145807_01_Initial")]
     partial class _01_Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
