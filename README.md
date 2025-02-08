@@ -1,10 +1,10 @@
-# CA_RS11_OOP_P2-2_AlexandraMendes
+# OOP Project
 O ginásio RSGym está a expandir os seus serviços, oferecendo aulas de personal trainer (PT) ao domicílio. 
-A Vertente Back-End - a desenvolver nesta fase: back-end da aplicação é composto por dois módulos principais:
+A Vertente Back-End é composta por dois módulos principais(pequenos projetos):
 
-- Módulo 'Gestão de Clientes': Originalmente desenvolvido como uma aplicação de consola, este módulo gere a inscrição dos clientes e o controlo dos pagamentos. O módulo está a ser atualizado para um ambiente web, mantendo todas as funcionalidades existentes(ambiente web, MVC Core 6, Entitiy Framework Core, padrão model first);
+- Módulo 'Gestão de Clientes': para inscrição dos clientes e o verificação dos pagamentos (ambiente web, MVC Core, Entitiy Framework Core, padrão model first);
  
-- Módulo 'Administração de Utilizadores': este novo módulo, desenvolvido em sistema de consola, permite a administração dos utilizadores da aplicação, incluindo a gestão de acesso (aplicação de consola, .NET Framework 4.7.2).
+- Módulo 'Administração de Utilizadores': desenvolvido em consola, permite a administração dos utilizadores da aplicação, incluindo a gestão de acesso (aplicação de consola, .NET Framework).
 
 ## 🚀 Começar
 
@@ -18,6 +18,6 @@ Passos para correr o projeto:
 
 ### 📋 Pré-requisitos
 
-- Net Core 6 instalado. https://dotnet.microsoft.com/en-us/download/dotnet/6.0
+- Net Core instalado. https://dotnet.microsoft.com/en-us/download/dotnet/
 - Visual Studio comunnity instalado. https://visualstudio.microsoft.com/vs/community/
 - Sql Server Instalado. https://www.microsoft.com/pt-br/sql-server/sql-server-downloads
