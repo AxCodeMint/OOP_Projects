@@ -19,7 +19,7 @@ namespace Administracao_Utilizadores.Data
 
             var user02 = new SimpleUser("Joana", "Teresa", new DateTime(1990, 08, 03), "jtersa@gmail.com", "+351969544765", "jteresa", "passpass");
 
-            var user03 = new AdminUser("Guilherme","Reis", new DateTime(1985, 12, 25), "mreis@gmail.com", "+351929465613", "guirei", "guilher00");
+            var user03 = new AdminUser("Guilherme","Reis", new DateTime(1985, 12, 25), "greis@gmail.com", "+351929465613", "guirei", "guilher00");
 
             AddUser(user01);
             AddUser(user02);
