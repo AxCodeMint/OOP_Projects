@@ -1,4 +1,4 @@
-# OOP Project
+# OOP Small Projects
 O ginásio RSGym está a expandir os seus serviços, oferecendo aulas de personal trainer (PT) ao domicílio. 
 A Vertente Back-End é composta por dois módulos principais(pequenos projetos):
 
